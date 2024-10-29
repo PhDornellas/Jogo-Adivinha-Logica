@@ -1,1 +1,1 @@
-# Jogo-da-Adivinha-o-L-gica
+# Jogo-Adivinha-Logica
