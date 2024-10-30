@@ -1,205 +1,57 @@
-import time
+import random
 
-def erro_jogar_novamente():
-    """Pergunta se o usuário deseja jogar novamente."""
-    resposta = input("ANIMAL NÃO ENCONTRADO :( \nDeseja jogar novamente? [S/N] ").upper()
-    if resposta == 'S':
-        main()
-    else:
-        print("ENCERRANDO PROGRAMA...")
-        time.sleep(2)
-        print("PROGRAMA ENCERRADO")
+def pergunta_Silogismo_falácia():
 
-def jogar_novamente():
+    print("Leia as frases e analise o que cada uma delas e diga se é Silogismo[S] ou falácia[F] \n")
 
-    escolha = str(input("Deseja jogara novamente? ")).upper()
+    perguntas =[("Nenhum livro pensa. 'A Odisséia' é um livro. Conclusão: 'A Odisséia' não pensa. ",'S'),
+                ("Sempre que João leva seu guarda-chuva, não chove. Hoje, João não levará seu guarda-chuva. CONCLUSÃO: Portanto, hoje vai chover. ",'F'),
+                ("Se todos os seres conscientes buscam propósito, então todos os humanos buscam sentido na vida.Todos os humanos são seres conscientes. CONCLUSÃO : Logo, todos os humanos buscam sentido na vida.",'S'),
+                ("Todo aluno estuda. Maria estuda. Conclusão: Maria é aluna. ",'F'),
+                ("Nenhuma fruta é carne. A maçã é uma fruta. Conclusão: A maçã não é carne. ",'S'),
+                ("Todos os matemáticos são bons em números. João é bom em números. Conclusão: João é matemático. ",'F'),
+                ("Todo computador processa dados. Esse laptop é um computador. Conclusão: Esse laptop processa dados. ",'S'),
+                ("Nenhum pássaro é mamífero. João não é pássaro. Conclusão: João é mamífero. ",'F'),
+                ("Nenhum anfíbio é pássaro. A rã é um anfíbio. Conclusão: A rã não é um pássaro. ",'S'),
+                ("Todo jogador de futebol corre. José corre. Conclusão: José é jogador de futebol. ",'F'),
+                ("Todo círculo é redondo. Esse objeto é um círculo. Conclusão: Esse objeto é redondo. ",'S'),
+                ("Todo peixe tem escamas. Esse animal tem escamas. Conclusão: Esse animal é um peixe.",'F'),
+                ("Nenhum réptil tem pelo. A cobra é um réptil. Conclusão: A cobra não tem pelo. ",'S'),
+                ("Todo cientista é curioso. Marta é curiosa. Conclusão: Marta é cientista. ",'F'),
+                ("Todos os professores ensinam. Marta é professora. Conclusão: Marta ensina. ",'S'),
+                ("Nenhum músico é engenheiro. Pedro não é músico. Conclusão: Pedro é engenheiro. ",'F'),
+                ("Todos os filósofos pensam sobre a existência. Sócrates é filósofo. Conclusão: Sócrates pensa sobre a existência.",'S'),
+                ("Todo médico usa jaleco. Pedro usa jaleco. Conclusão: Pedro é médico. ",'F'),
+                ("Nenhum ser que tem asas é incapaz de voar sem ajuda.Os morcegos são seres que não possuem asas. Conclusão: Os morcegos são capazes de voar sem ajuda.",'S'),
+                (" Cada célula do corpo humano é invisível a olho nu. O corpo humano é composto por essas células. CONCLUSÃO: Portanto, o corpo humano é invisível a olho nu.",'F'),
+                ]
+    
+    cont_S = 0
+    cont_F = 0
+    cont_errado = 0
 
-    if escolha == 'S':
-        main()
-    else:
-        print("ENCERRANDO PROGRAMA...")
-        time.sleep(2)
-        print("PROGRAMA ENCERRADO")
+    random.shuffle(perguntas)
 
-def adivinhe_servivo():
-    """Tenta adivinhar um ser vivo."""
-    resposta = input("Esse ser vivo é um mamífero? [S/N] ").upper()
-    if resposta == 'S':
-        resposta = input("Esse mamífero é do mar? [S/N] ").upper()
-        if resposta == 'S':
-            resposta = input("É uma BALEIA? [S/N] ").upper()
-            if resposta == 'S':
-                print("Acertei!! O animal que você pensou foi uma BALEIA")
-                jogar_novamente()
+    for pergunta, resp_correta in perguntas:
+        resp = str(input(pergunta + "(Silogismo [S] ou Falácia [F]): ")).upper()
+
+        if resp == resp_correta :
+            if resp == 'S':
+                cont_S += 1
             else:
-                resposta = input("É um GOLFINHO? [S/N] ").upper()
-                if resposta == 'S':
-                    print("Acertei!! O animal que você pensou foi um GOLFINHO")
-                    jogar_novamente()
-                else:
-                    resposta = input("É um PEIXE-BOI? [S/N] ").upper()
-                    if resposta == 'S':
-                        print("Acertei!! O animal que você pensou foi um PEIXE-BOI")
-                        jogar_novamente()
-                    else:
-                        erro_jogar_novamente()
+                cont_F += 1
         else:
-            resposta = input("Esse mamífero é terrestre? [S/N] ").upper()
-            if resposta == 'S':
-                resposta = input("É um LEÃO? [S/N] ").upper()
-                if resposta == 'S':
-                    print("Acertei!! O animal que você pensou foi um LEÃO")
-                    jogar_novamente()
-                else:
-                    resposta = input("É um CACHORRO? [S/N] ").upper()
-                    if resposta == 'S':
-                        print("Acertei!! O animal que você pensou foi um CACHORRO")
-                        jogar_novamente()
-                    else:
-                        resposta = input("É um GATO? [S/N] ").upper()
-                        if resposta == 'S':
-                            print("Acertei!! O animal que você pensou foi um GATO")
-                            jogar_novamente()
-                        else:
-                            # Adicione mais perguntas para mamíferos terrestres aqui.
-                            erro_jogar_novamente()
-            else:
-                erro_jogar_novamente()
-    elif resposta == 'N':
-        # Perguntas para aves
-        resposta = input("Esse ser vivo é uma ave? [S/N] ").upper()
-        if resposta == 'S':
-            resposta = input("É uma ARARA? [S/N] ").upper()
-            if resposta == 'S':
-                print("Acertei!! O animal que você pensou foi uma ARARA")
-                jogar_novamente()
-            else:
-                resposta = input("É um URUBU? [S/N] ").upper()
-                if resposta == 'S':
-                    print("Acertei!! O animal que você pensou foi um URUBU")
-                    jogar_novamente()
-                else:
-                    resposta = input("É um PAPAGAIO? [S/N] ").upper()
-                    if resposta == 'S':
-                        print("Acertei!! O animal que você pensou foi um PAPAGAIO")
-                        jogar_novamente()
-                    else:
-                        resposta = input("É um PAVÃO? [S/N] ").upper()
-                        if resposta == 'S':
-                            print("Acertei!! O animal que você pensou foi um PAVÃO")
-                            jogar_novamente()
-                        else:
-                            resposta = input("É um PINGUIM? [S/N] ").upper()
-                            if resposta == 'S':
-                                print("Acertei!! O animal que você pensou foi um PINGUIM")
-                                jogar_novamente()
-                            else:
-                                erro_jogar_novamente()
-        
-        # Perguntas para répteis
-        elif resposta == 'N':
-            resposta = input("Esse ser vivo é um réptil? [S/N] ").upper()
-            if resposta == 'S':
-                resposta = input("É uma COBRA? [S/N] ").upper()
-                if resposta == 'S':
-                    print("Acertei!! O animal que você pensou foi uma COBRA")
-                    jogar_novamente()
-                else:
-                    resposta = input("É uma TARTARUGA? [S/N] ").upper()
-                    if resposta == 'S':
-                        print("Acertei!! O animal que você pensou foi uma TARTARUGA")
-                        jogar_novamente()
-                    else:
-                        resposta = input("É uma LAGARTIXA? [S/N] ").upper()
-                        if resposta == 'S':
-                            print("Acertei!! O animal que você pensou foi uma LAGARTIXA")
-                            jogar_novamente()
-                        else:
-                            erro_jogar_novamente()
-
-            # Perguntas para anfíbios
-            elif resposta == 'N':
-                resposta = input("Esse ser vivo é um anfíbio? [S/N] ").upper()
-                if resposta == 'S':
-                    resposta = input("É um SAPO? [S/N] ").upper()
-                    if resposta == 'S':
-                        print("Acertei!! O animal que você pensou foi um SAPO")
-                        jogar_novamente()
-                    else:
-                        resposta = input("É uma RÃ? [S/N] ").upper()
-                        if resposta == 'S':
-                            print("Acertei!! O animal que você pensou foi uma RÃ")
-                            jogar_novamente()
-                        else:
-                            erro_jogar_novamente()
-                
-                # Perguntas para peixes
-                elif resposta == 'N':
-                    resposta = input("Esse ser vivo é um peixe? [S/N] ").upper()
-                    if resposta == 'S':
-                        resposta = input("É uma BORBOLETA? [S/N] ").upper()
-                        if resposta == 'S':
-                            print("Acertei!! O animal que você pensou foi uma BORBOLETA")
-                            jogar_novamente()
-                        else:
-                            resposta = input("É um MOSQUITO? [S/N] ").upper()
-                            if resposta == 'S':
-                                print("Acertei!! O animal que você pensou foi um MOSQUITO")
-                                jogar_novamente()
-                            else:
-                                resposta = input("É um CAMARÃO? [S/N] ").upper()
-                                if resposta == 'S':
-                                    print("Acertei!! O animal que você pensou foi um CAMARÃO")
-                                    jogar_novamente()
-                                else:
-                                    resposta = input("É uma ESPONJA? [S/N] ").upper()
-                                    if resposta == 'S':
-                                        print("Acertei!! O animal que você pensou foi uma ESPONJA")
-                                        jogar_novamente()
-                                    else:
-                                        resposta = input("É uma ÁGUA-VIVA? [S/N] ").upper()
-                                        if resposta == 'S':
-                                            print("Acertei!! O animal que você pensou foi uma ÁGUA-VIVA")
-                                            jogar_novamente()
-                                        else:
-                                            erro_jogar_novamente()
-            else:
-                erro_jogar_novamente()
-    else:
-        erro_jogar_novamente()
+            cont_errado += 1
 
 
-
-def adivinhe_fruta():
-    print("FRUTA")
-
-
-
-def adivinhe_objeto():
-    print("OBJETO")
+# Exibe a pontuação final ao terminar as perguntas
+    print("\nResultados:")
+    print("Silogismos corretos:", cont_S)
+    print("Falácias corretas:", cont_F)
+    print("Respostas incorretas:", cont_errado)
 
 def main():
-    """Função principal do jogo."""
-    print("Pense em um animal, Fruta ou objeto!")
-    time.sleep(3)
-
-    opcao = str(input("Voce esta pesando em um ser vivo? ")).upper()
-
-    if opcao == 'S':
-        adivinhe_servivo()
-    elif opcao == 'N':
-        opcao = str(input("Voce esta pesando em uma fruta ?")).upper()
-        if opcao == 'S':
-            adivinhe_fruta()
-        else:
-            opcao = str(input("Então voce esta pensando em um objeto? ")).upper()
-            if opcao == 'S':
-                adivinhe_objeto()
-            else:
-                print("OPÇÃO INVALIDA!")
-                jogar_novamente()
-
-    
+    pergunta_Silogismo_falácia()
 
 if __name__ == "__main__":
     main()
