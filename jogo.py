@@ -1,10 +1,10 @@
 import random
 import json
 
-arquivo = 'ranking.json'  # Nome do arquivo JSON para armazenar o ranking
+arquivo = 'ranking.json'  
 
 def carregar_ranking():
-    """Carrega os dados do ranking do arquivo JSON."""
+    
     try:
         with open(arquivo, 'r') as file:
             return json.load(file)
@@ -12,12 +12,12 @@ def carregar_ranking():
         return []
 
 def salvar_ranking(ranking):
-    """Salva os dados do ranking no arquivo JSON."""
+    
     with open(arquivo, 'w') as file:
         json.dump(ranking, file, indent=4)
 
 def exibir_ranking():
-    """Exibe o ranking dos jogadores."""
+    
     ranking = carregar_ranking()
     if ranking:
         print("\nRanking de Jogadores:")
@@ -68,15 +68,15 @@ def pergunta_Silogismo_falácia():
         else:
             cont_errado += 1
 
-    # Exibe a pontuação final
+    
     print("\nResultados:")
     print("Silogismos corretos:", cont_S)
     print("Falácias corretas:", cont_F)
     print("Respostas incorretas:", cont_errado)
 
-    # Pergunta o nome do jogador e salva o resultado no ranking
+    
     nome_jogador = input("\nDigite seu nome para salvar no ranking: ")
-    pontuacao = cont_S + cont_F  # Soma das respostas corretas
+    pontuacao = cont_S + cont_F  
 
     novo_jogador = {"nome": nome_jogador, "pontuacao": pontuacao}
     ranking = carregar_ranking()
