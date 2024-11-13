@@ -78,7 +78,7 @@ def pergunta_Silogismo_falácia():
     nome_jogador = input("\nDigite seu nome para salvar no ranking: ")
     pontuacao = cont_S + cont_F  
 
-    novo_jogador = {"nome": nome_jogador, "pontuacao": pontuacao}
+    novo_jogador = {"nome": nome_jogador, "pontuação": pontuacao}
     ranking = carregar_ranking()
     ranking.append(novo_jogador)
     salvar_ranking(ranking)
